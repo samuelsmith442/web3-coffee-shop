@@ -1,0 +1,22 @@
+/* Custom styles */
+body {
+  background-color: white;
+  min-height: 100vh;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.coffee-btn {
+  transition: all 0.3s;
+}
+
+.coffee-btn:hover {
+  transform: scale(1.05);
+}
+
+.container {
+  max-width: 64rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+}

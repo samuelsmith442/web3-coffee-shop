@@ -4,57 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web3 Coffee Shop</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {}
-        }
-      }
-    </script>
-    <link rel="stylesheet" href="./styles.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+    <!-- Local Tailwind CSS -->
+    <link rel="stylesheet" href="./dist/output.css">
   </head>
 
-  <body class="bg-white">
-    <div class="container max-w-4xl mx-auto p-6">
-      <header class="text-center mb-10">
-        <h1 class="text-4xl font-bold text-black mb-2">Web3 Coffee Shop</h1>
-        <p class="text-lg text-black">Buy coffee with Ethereum</p>
-      </header>
+  <body class="min-h-screen">
+    <div class="container max-w-4xl mx-auto p-4 sm:p-6">
+      <header class="mb-8 sm:mb-10">
+        <!-- Mobile-first header layout -->
+        <div class="flex justify-between items-start mb-4 sm:mb-6">
+          <div class="flex-1">
+            <!-- Mobile: Stack icon and title vertically, Desktop: Side by side -->
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-center">
+              <div class="flex items-center justify-center sm:justify-start mb-2 sm:mb-0">
+                <i data-lucide="coffee" class="w-10 h-10 sm:w-12 sm:h-12 text-amber-600 dark:text-amber-400 mr-2 sm:mr-3"></i>
+                <h1 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 dark:text-white">Web3 Coffee Shop</h1>
+              </div>
+            </div>
+          </div>
 
-      <div class="bg-white rounded-xl shadow-lg p-6 mb-8">
-        <div class="flex justify-end mb-4">
-          <button id="connectButton" class="bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-300">Connect Wallet</button>
+          <!-- Theme Toggle Button - Always visible and properly positioned -->
+          <div class="flex-shrink-0 ml-4">
+            <button id="themeToggle" class="p-2 rounded-lg bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 transition-colors duration-200 shadow-md">
+              <i data-lucide="sun" class="w-5 h-5 text-gray-800 dark:text-gray-200 dark:hidden"></i>
+              <i data-lucide="moon" class="w-5 h-5 text-gray-200 hidden dark:block"></i>
+            </button>
+          </div>
         </div>
 
-        <div class="grid md:grid-cols-2 gap-6">
-          <div class="bg-gray-100 p-6 rounded-lg">
-            <h2 class="text-2xl font-semibold text-black mb-4">Buy a Coffee</h2>
-            <div class="mb-4">
-              <label for="ethAmount" class="block text-black font-medium mb-2">ETH Amount</label>
-              <input id="ethAmount" placeholder="0.1" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none" />
+        <div class="text-center">
+          <p class="text-base sm:text-lg text-gray-700 dark:text-gray-200">Buy coffee with Ethereum</p>
+        </div>
+      </header>
+
+      <div class="bg-white dark:bg-dark-card rounded-xl shadow-lg dark:shadow-2xl p-4 sm:p-6 mb-6 sm:mb-8 border border-gray-200 dark:border-gray-700">
+        <div class="flex justify-center sm:justify-end mb-4 sm:mb-6">
+          <button id="connectButton" class="bg-blue-500 hover:bg-blue-600 dark:bg-blue-600 dark:hover:bg-blue-700 text-white font-medium py-3 px-6 sm:py-2 sm:px-4 rounded-lg transition-all duration-300 flex items-center gap-2 shadow-md hover:shadow-lg w-full sm:w-auto justify-center" style="color: #ffffff !important; background-color: #3b82f6 !important;">
+            <i data-lucide="wallet" class="w-4 h-4" style="color: #ffffff !important;"></i>
+            <span style="color: #ffffff !important;">Connect Wallet</span>
+          </button>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+          <div class="bg-gray-50 dark:bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-200 dark:border-gray-600">
+            <div class="flex items-center mb-4">
+              <i data-lucide="shopping-cart" class="w-5 h-5 sm:w-6 sm:h-6 text-amber-600 dark:text-amber-400 mr-2"></i>
+              <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">Buy a Coffee</h2>
             </div>
-            <button type="button" id="fundButton" class="coffee-btn w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-lg flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-              </svg>
+            <div class="mb-6 sm:mb-8">
+              <label for="ethAmount" class="text-gray-700 dark:text-gray-300 font-medium mb-4 flex items-center gap-2">
+                <i data-lucide="coins" class="w-4 h-4"></i>
+                ETH Amount
+              </label>
+              <input id="ethAmount" placeholder="0.1" class="w-full py-4 px-4 text-base font-medium border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 shadow-md hover:shadow-lg transition-all duration-300" style="height: 56px;" />
+            </div>
+            <button type="button" id="fundButton" class="coffee-btn w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 dark:from-amber-600 dark:to-orange-600 dark:hover:from-amber-700 dark:hover:to-orange-700 text-white font-bold py-4 sm:py-3 px-4 rounded-lg flex items-center justify-center gap-2 shadow-md hover:shadow-lg transition-all duration-300 text-base sm:text-sm">
+              <i data-lucide="coffee" class="w-5 h-5"></i>
               Buy Coffee
             </button>
           </div>
 
-          <div class="bg-gray-100 p-6 rounded-lg">
-            <h2 class="text-2xl font-semibold text-black mb-4">Shop Management</h2>
-            <div class="space-y-4">
-              <button id="balanceButton" class="w-full bg-blue-400 hover:bg-blue-500 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+          <div class="bg-gray-50 dark:bg-gray-800 p-4 sm:p-6 rounded-lg border border-gray-200 dark:border-gray-600 flex flex-col h-full">
+            <div class="flex items-center mb-4">
+              <i data-lucide="settings" class="w-5 h-5 sm:w-6 sm:h-6 text-blue-600 dark:text-blue-400 mr-2"></i>
+              <h2 class="text-xl sm:text-2xl font-semibold text-gray-900 dark:text-white">Shop Management</h2>
+            </div>
+
+            <!-- Balance Display Area -->
+            <div class="mb-6 sm:mb-8">
+              <div class="bg-white dark:bg-gray-700 rounded-lg p-4 border border-gray-200 dark:border-gray-600">
+                <div class="flex items-center justify-between">
+                  <span class="text-gray-600 dark:text-gray-300 font-medium">Current Balance:</span>
+                  <span id="balanceDisplay" class="text-lg font-bold text-blue-600 dark:text-blue-400">---.-- ETH</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-4 flex-grow flex flex-col justify-end">
+              <button id="balanceButton" class="w-full bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 dark:from-blue-600 dark:to-blue-700 dark:hover:from-blue-700 dark:hover:to-blue-800 text-white font-medium py-4 sm:py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg text-base sm:text-sm">
+                <i data-lucide="wallet-2" class="w-5 h-5"></i>
                 Check Balance
               </button>
-              <button id="withdrawButton" class="w-full bg-blue-400 hover:bg-blue-500 text-white font-medium py-3 px-4 rounded-lg transition-colors duration-300 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
-                </svg>
+              <button id="withdrawButton" class="w-full bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 dark:from-green-600 dark:to-green-700 dark:hover:from-green-700 dark:hover:to-green-800 text-white font-medium py-4 sm:py-3 px-4 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 shadow-md hover:shadow-lg text-base sm:text-sm">
+                <i data-lucide="arrow-up-right" class="w-5 h-5"></i>
                 Withdraw Funds
               </button>
             </div>
@@ -62,10 +96,48 @@
         </div>
       </div>
 
-      <footer class="text-center text-gray-700 mt-8">
-        <p>© 2025 Web3 Coffee Shop - Powered by Ethereum</p>
+      <footer class="text-center text-gray-600 dark:text-gray-400 mt-6 sm:mt-8 px-4">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-2 mb-2">
+          <div class="flex items-center gap-2">
+            <i data-lucide="zap" class="w-4 h-4 text-yellow-500"></i>
+            <p class="text-sm sm:text-base"> 2025 Web3 Coffee Shop</p>
+            <i data-lucide="zap" class="w-4 h-4 text-yellow-500"></i>
+          </div>
+          <p class="text-sm sm:text-base text-gray-500 dark:text-gray-500">Powered by Ethereum</p>
+        </div>
       </footer>
     </div>
+
+    <!-- Theme Toggle Script -->
+    <script>
+      // Initialize Lucide icons
+      lucide.createIcons();
+
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('themeToggle');
+      const html = document.documentElement;
+
+      // Check for saved theme preference or default to 'dark'
+      const currentTheme = localStorage.getItem('theme') || 'dark';
+      html.classList.toggle('dark', currentTheme === 'dark');
+
+      themeToggle.addEventListener('click', () => {
+        const isDark = html.classList.contains('dark');
+        html.classList.toggle('dark', !isDark);
+        localStorage.setItem('theme', !isDark ? 'dark' : 'light');
+
+        // Ensure Connect Wallet button text is always visible
+        const connectButton = document.getElementById('connectButton');
+        if (connectButton) {
+          connectButton.style.color = '#ffffff';
+          connectButton.style.backgroundColor = '#3b82f6';
+          const icon = connectButton.querySelector('i');
+          const span = connectButton.querySelector('span');
+          if (icon) icon.style.color = '#ffffff';
+          if (span) span.style.color = '#ffffff';
+        }
+      });
+    </script>
 
     <!-- If you want to use the typescript or the JS, adjust this line. -->
     <!-- If you use the typescript, you'll need to run `pnpm dev` instead of running the raw HTML -->

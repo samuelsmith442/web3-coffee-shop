@@ -7,8 +7,8 @@
 		"format": "prettier --write .",
 		"compile": "tsc --project tsconfig.json ",
 		"build": "pnpm run build:css && vite build",
-		"build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch=false",
-		"build:css:watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
+		"build:css": "tailwindcss -i ./src/input.css -o ./dist/index.css --watch=false",
+		"build:css:watch": "tailwindcss -i ./src/input.css -o ./dist/index.css --watch",
 		"preview": "vite preview",
 		"postinstall": "mkdir -p dist"
 	},

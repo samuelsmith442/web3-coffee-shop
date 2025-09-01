@@ -22,6 +22,10 @@ https://github.com/Cyfrin/foundry-fund-me-cu
 - Interactive buttons with hover effects and transitions
 - SVG icons for better visual communication
 - Web3 integration for Ethereum transactions
+- Toast notifications for user feedback with Toastify JS
+  - Color-coded alerts (error, success, warning, info)
+  - Auto-dismiss functionality
+  - Responsive design for all screen sizes
 
 There are 2 different ways to run this codebase.
 
@@ -110,6 +114,25 @@ The integration is done by adding the Tailwind CSS CDN script in the `index.html
     }
   }
 </script>
+```
+
+## Toast Notifications
+
+This project uses Toastify JS for user-friendly toast notifications that provide feedback during various operations:
+
+- **Error notifications**: Displayed when operations fail or validation errors occur
+- **Success notifications**: Shown when transactions complete successfully
+- **Warning notifications**: Used for validation warnings and potential issues
+- **Info notifications**: Provide general information like balance updates
+
+The notifications are styled with appropriate colors and icons for each type, and automatically dismiss after a configurable duration. Users can also manually close notifications.
+
+```javascript
+// Example of how notifications are used
+showAlert("Transaction successful!", "success");
+showAlert("Please enter an ETH amount", "warning");
+showAlert("Failed to connect wallet", "error");
+showAlert("Current balance: 0.5 ETH", "info");
 ```
 
 ## Deployment

@@ -6,10 +6,11 @@
 		"anvil": "anvil --load-state fundme-anvil.json",
 		"format": "prettier --write .",
 		"compile": "tsc --project tsconfig.json ",
-		"build": "npm run build:css && vite build",
+		"build": "pnpm run build:css && vite build",
 		"build:css": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch=false",
 		"build:css:watch": "tailwindcss -i ./src/input.css -o ./dist/output.css --watch",
-		"preview": "vite preview"
+		"preview": "vite preview",
+		"postinstall": "mkdir -p dist"
 	},
 	"dependencies": {
 		"viem": "^2.23.2"

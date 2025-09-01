@@ -14,10 +14,14 @@ https://github.com/Cyfrin/foundry-fund-me-cu
     - [Typescript Edition](#typescript-edition)
       - [Requirements](#requirements-1)
       - [Quickstart](#quickstart-2)
+- [UI Components](#ui-components)
+  - [Tailwind CSS Integration](#tailwind-css-integration)
+  - [Toast Notifications](#toast-notifications)
+- [Deployment](#deployment)
 
 # Features
 
-- Modern, responsive UI with Tailwind CSS (via CDN)
+- Modern, responsive UI with Tailwind CSS
 - Clean design with blue color scheme
 - Interactive buttons with hover effects and transitions
 - SVG icons for better visual communication
@@ -94,27 +98,28 @@ Hit it, and you should see metamask pop up.
 
 2. Press some buttons!
 
+# UI Components
+
 ## Tailwind CSS Integration
 
-This project uses Tailwind CSS via CDN for styling, which provides several benefits:
+This project uses Tailwind CSS for styling, installed as a dev dependency via npm/pnpm. This provides several benefits:
 
-- No build process required for CSS
-- Instant styling updates during development
-- Simplified dependency management
-- Compatible with the latest Tailwind CSS features
+- Optimized production builds with only the CSS classes that are used
+- Consistent styling across development and production
+- Full access to Tailwind's plugin ecosystem
+- Custom configuration via `tailwind.config.js`
 
-The integration is done by adding the Tailwind CSS CDN script in the `index.html` file:
+The project includes the following Tailwind-related dependencies:
 
-```html
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-  tailwind.config = {
-    theme: {
-      extend: {}
-    }
-  }
-</script>
+```json
+"devDependencies": {
+  "autoprefixer": "^10.4.20",
+  "postcss": "^8.5.0",
+  "tailwindcss": "^3.4.17"
+}
 ```
+
+Tailwind is configured in the project using standard configuration files (`tailwind.config.js` and `postcss.config.js`).
 
 ## Toast Notifications
 
@@ -126,6 +131,23 @@ This project uses Toastify JS for user-friendly toast notifications that provide
 - **Info notifications**: Provide general information like balance updates
 
 The notifications are styled with appropriate colors and icons for each type, and automatically dismiss after a configurable duration. Users can also manually close notifications.
+
+### Implementation
+
+Toastify JS is integrated via npm/pnpm:
+
+```bash
+pnpm add toastify-js
+```
+
+And imported in the JavaScript file:
+
+```javascript
+import Toastify from 'toastify-js'
+import 'toastify-js/src/toastify.css'
+```
+
+### Usage Examples
 
 ```javascript
 // Example of how notifications are used
@@ -204,6 +226,6 @@ pnpm install
 pnpm run dev
 ```
 
-3. Open your browser to whatever the command above says, ie: `http://localhost:5173/`
+4. Open your browser to whatever the command above says, ie: `http://localhost:5173/` or similar
 
-4. Press some buttons!
+5. Press some buttons!
